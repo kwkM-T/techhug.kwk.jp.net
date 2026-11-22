@@ -1,0 +1,5 @@
+# Google AdSense ads.txt
+# パブリッシャーID（pub-XXXXXXXXXXXXXXXX）を自身のIDに書き換えてください。
+# AdSense管理画面 > 「サイト」 > 「ads.txt」からコピーした内容をそのまま貼り付けても問題ありません。
+
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "item-001",
+    "title": "Logicool MX Master 3S アドバンスド ワイヤレス マウス",
+    "description": "静音クリックと超高速スクロール（MagSpeed）を搭載した、長時間のPC作業に欠かせない最高峰のエルゴノミクスマウス。",
+    "imageUrl": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
+    "amazonUrl": "https://www.amazon.co.jp/dp/B0B11DQQWJ?tag=example-22",
+    "rakutenUrl": "https://item.rakuten.co.jp/example/mx-master-3s/",
+    "otherUrl": "https://www.logicool.co.jp/ja-jp/products/mice/mx-master-3s.html",
+    "otherLabel": "公式サイト"
+  },
+  {
+    "id": "item-002",
+    "title": "エルゴトロン LX デスクマウント モニターアーム",
+    "description": "アルミ製の堅牢な作りとスムーズな可動域で、デスクを広々使える定番モニターアーム。デスクワークの姿勢改善にも最適。",
+    "imageUrl": "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&auto=format&fit=crop&q=80",
+    "amazonUrl": "https://www.amazon.co.jp/dp/B00358RIRC?tag=example-22",
+    "rakutenUrl": "https://item.rakuten.co.jp/example/ergotron-lx/",
+    "otherUrl": null,
+    "otherLabel": null
+  }
+]

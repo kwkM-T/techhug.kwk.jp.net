@@ -1,0 +1,36 @@
+---
+interface Props {
+  slot?: string;
+  format?: 'auto' | 'fluid' | 'rectangle' | 'horizontal';
+  responsive?: 'true' | 'false';
+  className?: string;
+}
+
+const {
+  slot,
+  format = 'auto',
+  responsive = 'true',
+  className = '',
+} = Astro.props;
+
+const clientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
+---
+
+{clientId ? (
+  <div class={`adsense-unit my-8 text-center overflow-hidden not-prose ${className}`} data-pagefind-ignore>
+    <div class="text-[10px] text-slate-400 tracking-wider uppercase mb-1">
+      スポンサーリンク
+    </div>
+    <ins
+      class="adsbygoogle"
+      style="display:block; min-height: 90px;"
+      data-ad-client={clientId}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive={responsive}
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+) : null}
