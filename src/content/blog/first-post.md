@@ -36,4 +36,4 @@ Astroを使用することで、GitHubと連携してVercelやCloudflare Pages�
 
 Astroを使えば、シンプルなMarkdown執筆体験と、最新のフロントエンド技術の両立が可能です。
 
-ぜひ皆さんもAstroでのブログ構築を試してみてください！
+ぜひ皆さんもAstroでのブログ構築を試してみてください！（Cloudflare自動デプロイ確認テスト）
