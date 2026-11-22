@@ -27,3 +27,8 @@ Thumbs.db
 # Editor directories
 .idea/
 .vscode/
+
+# WordPress migration files
+wp-export.xml
+techhug.WordPress.*.xml
+scripts/convert-wp-xml.js

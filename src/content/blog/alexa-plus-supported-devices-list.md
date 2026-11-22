@@ -1,0 +1,95 @@
+---
+title: "【対応リスト】Alexa+（アレクサプラス）は手持ちのEchoで使える？対象端末・非対応モデルまとめ"
+description: "新しいAI機能「Alexa+（アレクサプラス）」を試してみたいけれど、「我が家にあるEchoやFire TVはそのまま使えるのかな？」と気になっている方も多いのではないでしょうか。 この記事では、Alexa+が使える対象機器と対象外モデル、..."
+pubDate: 2026-10-29
+updatedDate: 2026-11-02
+tags: ["Alexa","スマートホーム","Alexa+","ガジェット"]
+heroImage: "https://techhug.kwk.jp.net/wp-content/uploads/2026/10/Gemini_Generated_Image_4tie224tie224tie.jpg"
+---
+
+新しいAI機能「Alexa+（アレクサプラス）」を試してみたいけれど、「我が家にあるEchoやFire TVはそのまま使えるのかな？」と気になっている方も多いのではないでしょうか。
+
+この記事では、Alexa+が使える対象機器と対象外モデル、そしてお持ちの端末が対応しているか確認する方法を分かりやすくまとめました。
+
+* * *
+
+<!-- TODO: 画像差し替え 元URL: https://techhug.kwk.jp.net/wp-content/uploads/2026/10/Gemini_Generated_Image_4tie224tie224tie-1024x572.jpg -->
+![](https://techhug.kwk.jp.net/wp-content/uploads/2026/10/Gemini_Generated_Image_4tie224tie224tie-1024x572.jpg)
+
+## **1\. Alexa+ 対応Echoデバイス一覧**
+
+現在販売されているモデルや、近年の主要なEchoシリーズは基本的にAlexa+に対応しています。
+
+### **スマートスピーカー・Echoシリーズ**
+
+-   **Echo Dot**：第5世代、第6世代、Echo Dot Max（2025年発売）
+-   **Echo Spot**：2024年発売モデル
+-   **Echo Studio**：最新モデル（2025年発売）
+-   **Echo Time**
+-   **コラボ・限定モデル**：Echo Dot ドラえもんエディション（2026年発売）、Echo Dot NBA公式認定エディション（2026年発売）
+
+### **スマートディスプレイ（Echo Showシリーズ）**
+
+-   **Echo Show 5**
+-   **Echo Show 8**：第3世代（2024年発売）、2025年発売モデル
+-   **Echo Show 11**
+-   **Echo Show 15**
+
+これからスマートスピーカーの導入を検討される方は、上記の現行モデルを選んでおけば安心してAlexa+を利用できます。
+
+* * *
+
+## **2\. 対応するFire TV端末・スマートテレビ**
+
+テレビ画面でAlexa+を利用できるFire TV端末や、Fire TVを内蔵したスマートテレビの対応状況は以下の通りです。
+
+### **Fire TV端末**
+
+-   **Fire TV Cube**（第3世代）
+-   **Fire TV Stick 4K Max**（第2世代）
+-   **Fire TV Stick 4K Plus**
+-   **Fire TV Stick 4K**（第2世代 / 新モデル）
+-   **Fire TV Stick 4K Select**
+-   **Fire TV Stick HD**（第2世代）
+
+### **Fire TV内蔵スマートテレビ**
+
+-   **パナソニック 4K液晶・有機EL VIERA**（TV-55W95C / TV-55W97C / TV-55Z95C など）
+-   **JVC Fire TV搭載4Kテレビ**（※A80B、YS20を除く）
+
+リビングのテレビで音声AIを活用したい場合は、Fire TV Stick 4Kシリーズや対応VIERAがあると便利です。
+
+* * *
+
+## **3\. 対象外・非対応のデバイス**
+
+一部の初期モデルや特定の端末は、残念ながらAlexa+のサポート対象外となっています。
+
+### **対象外となる旧世代Echoモデル**
+
+-   Echo Dot（第1世代）
+-   Echo（第1世代、第2世代）
+-   Echo Plus（第1世代）
+-   Echo Show（第1世代、第2世代）
+-   Echo Spot（第1世代）
+
+※上記の対象外端末であっても、これまで通り従来の標準版Alexaとして利用し続けることは可能です。
+
+### **現在非対応の端末**
+
+-   **Fire タブレットシリーズ**
+-   **サードパーティ製Alexa搭載機器**（Alexa Built-in端末）
+
+※サードパーティ機器やタブレットについては、今後順次アップデートでの対応拡大が予定されています。
+
+* * *
+
+## **4\. 手持ち端末が対応しているか確認する方法**
+
+「自分のEchoが何世代か分からない…」という場合でも、Amazonのアカウント情報から簡単に確認できます。
+
+1.  Amazonのアカウントにログインします。
+2.  Amazonの対応確認ページ（ www.amazon.co.jp/newalexa ）にアクセスします。
+3.  登録済みのデバイス一覧から、Alexa+への対応状況やプレビュー申請の可否がひと目で確認できます。
+
+買い替えが必要か迷っている方は、まず上記の公式ページで手持ち端末のステータスをチェックしてみてください。
