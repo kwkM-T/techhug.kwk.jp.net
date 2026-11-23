@@ -1,21 +1,235 @@
 [
   {
-    "id": "item-001",
-    "title": "Logicool MX Master 3S アドバンスド ワイヤレス マウス",
-    "description": "静音クリックと超高速スクロール（MagSpeed）を搭載した、長時間のPC作業に欠かせない最高峰のエルゴノミクスマウス。",
-    "imageUrl": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
-    "amazonUrl": "https://www.amazon.co.jp/dp/B0B11DQQWJ?tag=example-22",
-    "rakutenUrl": "https://item.rakuten.co.jp/example/mx-master-3s/",
-    "otherUrl": "https://www.logicool.co.jp/ja-jp/products/mice/mx-master-3s.html",
-    "otherLabel": "公式サイト"
+    "id": "echo-show5",
+    "aliases": [
+      "3"
+    ],
+    "title": "Echo Show 5 (第3世代) - スマートディスプレイ with Alexa",
+    "description": "2メガピクセルカメラ付き。ビデオ通話や画像表示に対応したコンパクトなスマートディスプレイ。お留守番・育児・インテリアとして大活躍。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61vQqn6zZxL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/48l5n6X",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
   },
   {
-    "id": "item-002",
-    "title": "エルゴトロン LX デスクマウント モニターアーム",
-    "description": "アルミ製の堅牢な作りとスムーズな可動域で、デスクを広々使える定番モニターアーム。デスクワークの姿勢改善にも最適。",
-    "imageUrl": "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&auto=format&fit=crop&q=80",
-    "amazonUrl": "https://www.amazon.co.jp/dp/B00358RIRC?tag=example-22",
-    "rakutenUrl": "https://item.rakuten.co.jp/example/ergotron-lx/",
+    "id": "echo-dot",
+    "aliases": [
+      "4"
+    ],
+    "title": "Echo Dot (第5世代) - Alexa、センサー搭載",
+    "description": "定番の人気モデル。鮮やかなサウンドと温湿度センサーを搭載。コンパクトで使いやすく、はじめてのAlexaにも最適。",
+    "imageUrl": "https://m.media-amazon.com/images/I/71Y21S6bZEL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4noAoeQ",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "echo-pop",
+    "aliases": [
+      "5"
+    ],
+    "title": "Echo Pop - コンパクトスマートスピーカー with Alexa",
+    "description": "手頃な価格でAlexaを始められるエントリーモデル。カラーバリエーションが豊富でインテリアに合わせやすい。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61e1BLJVOFL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4pZObu7",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "smart-plug",
+    "aliases": [
+      "7"
+    ],
+    "title": "Amazonベーシック スマートプラグ",
+    "description": "普通のコンセントをスマートホーム化。Alexa対応で声だけで家電のオン・オフが可能に。タイマー設定も簡単。",
+    "imageUrl": "https://m.media-amazon.com/images/I/51Auu5oApHL._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/4nGU3XD",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "smart-bulb",
+    "aliases": [
+      "8"
+    ],
+    "title": "Amazonベーシック スマートLED電球 E26",
+    "description": "Alexa対応のスマート電球。声で明るさ・色温度を調整でき、寝かしつけや就寝時の照明制御に最適。",
+    "imageUrl": "https://m.media-amazon.com/images/I/71uF8GPU0UL._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/4gMb3ZJ",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "smartband-10",
+    "aliases": [
+      "9"
+    ],
+    "title": "Xiaomi Smart Band 10 スマートバンド",
+    "description": "21日間連続使用可能。振動アラーム・着信通知・LINEアプリ通知に対応。150種類のスポーツモードと環境光センサー搭載。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/51LKOppPzIL._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/42af1FA",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "fitbit-inspire3",
+    "aliases": [
+      "10"
+    ],
+    "title": "Fitbit Inspire 3 フィットネストラッカー",
+    "description": "最大10日間のバッテリー。心拍計測・睡眠スコア・健康指標ダッシュボードを搭載した軽量フィットネストラッカー。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61JL0ccPltL._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/4gG11ZY",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "apple-watch-se2",
+    "aliases": [
+      "11"
+    ],
+    "title": "Apple Watch SE 第2世代 GPS モデル",
+    "description": "衝突事故検出・心拍数モニタリング・Retinaディスプレイ・耐水性能を備えたApple Watchのエントリーモデル。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61J9QH4jUEL._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/46reWQc",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "redmi-watch5",
+    "aliases": [
+      "12"
+    ],
+    "title": "Redmi Watch 5 Active スマートウォッチ",
+    "description": "大画面ディスプレイと長時間バッテリーを備えたコスパ優秀なスマートウォッチ。健康管理機能も充実。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61yBLVWkqRL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4oXPDfB",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "fire7-kids",
+    "aliases": [
+      "13"
+    ],
+    "title": "Amazon Fire 7 キッズモデル タブレット",
+    "description": "2年間保証付き。子ども向けコンテンツが使い放題のAmazon Kids+1年分同梱。丈夫なキッズカバー付き。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71ybOZiuX8L._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/46DQw4Z",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "firehd10-kids-pro",
+    "aliases": [
+      "14"
+    ],
+    "title": "Amazon Fire HD 10 キッズプロ (10インチ)",
+    "description": "大画面10インチ。Amazon Kids+1年間使い放題付き。高解像度で学習・読書・動画視聴に最適なキッズタブレット。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/81gwEihxxIL._AC_SY300_SX300_QL70_ML2_.jpg",
+    "amazonUrl": "https://amzn.to/3KItcvi",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "earfun-openjump",
+    "aliases": [
+      "15"
+    ],
+    "title": "EarFun OpenJump オープンイヤー イヤホン",
+    "description": "耳を塞がない開放型Bluetoothイヤホン。マルチポイント接続・IPX7防水・ワイヤレス充電対応。育児中の「ながら聴き」に最適。",
+    "imageUrl": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/615pnRVhD0L._AC_SL1500_.jpg",
+    "amazonUrl": "https://amzn.to/3ESKH9U",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "earfun-air-pro-4i",
+    "aliases": [
+      "16"
+    ],
+    "title": "EarFun Air Pro 4i ノイズキャンセリングイヤホン",
+    "description": "高性能ANCと優れた音質を両立したワイヤレスイヤホン。長時間再生で集中作業や育児後の息抜きタイムに。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61YUHLCBNfL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4imGVoG",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "earfun-clip",
+    "aliases": [
+      "17"
+    ],
+    "title": "EarFun Clip オープンイヤーイヤホン",
+    "description": "クリップ型で耳に引っ掛けて使う開放型イヤホン。家事・育児中でも周囲の音を聴きながら音楽やPodcastを楽しめる。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61V9X5q1N6L._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/49wlEX9",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "xiaomi-s20",
+    "aliases": [
+      "18"
+    ],
+    "title": "Xiaomi ロボット掃除機 S20 吸引・水拭き両用",
+    "description": "5000Pa強力吸引＋水拭き対応。高精度マッピングで効率的に掃除。育児で忙しい家庭の掃除を自動化。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61LXauzSmCL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4gFweMR",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "roborock-q5pro",
+    "aliases": [
+      "19"
+    ],
+    "title": "roborock Q5 Pro ロボット掃除機",
+    "description": "高精度LIDARナビゲーション搭載の上位モデル。強力吸引と水拭き機能で、部屋の隅まで徹底清掃。",
+    "imageUrl": "https://m.media-amazon.com/images/I/61NfkTxFouL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/4p08yq2",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "eufy-cam-c220",
+    "aliases": [
+      "20"
+    ],
+    "title": "Anker Eufy Indoor Cam C220 屋内カメラ",
+    "description": "2K超高画質・360°首振り対応の屋内セキュリティカメラ。子どものお留守番の見守りに最適。クラウド不要ローカル保存対応。",
+    "imageUrl": "https://m.media-amazon.com/images/I/51dFoLCjMnL._AC_SX679_.jpg",
+    "amazonUrl": "https://amzn.to/43OvOP7",
+    "rakutenUrl": null,
+    "otherUrl": null,
+    "otherLabel": null
+  },
+  {
+    "id": "amazon-prime",
+    "aliases": [
+      "21"
+    ],
+    "title": "Amazonプライム会員",
+    "description": "配送料ゼロ＆プライムビデオ・音楽・Amazon Alexa AIが使い放題。30日間無料体験あり。",
+    "imageUrl": null,
+    "amazonUrl": "https://link.amazon.co.jp/B0b6DwUZS",
+    "rakutenUrl": null,
     "otherUrl": null,
     "otherLabel": null
   }

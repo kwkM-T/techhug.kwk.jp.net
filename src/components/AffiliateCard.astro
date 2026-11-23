@@ -1,11 +1,12 @@
----
+﻿---
 import affiliatesData from '../data/affiliates.json';
 
 interface AffiliateItem {
   id: string;
+  aliases?: string[];
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   amazonUrl?: string | null;
   rakutenUrl?: string | null;
   otherUrl?: string | null;
@@ -13,13 +14,16 @@ interface AffiliateItem {
 }
 
 interface Props {
-  id: string;
+  id: string | number;
 }
 
 const { id } = Astro.props;
+const targetId = String(id);
 
-// affiliates.json から該当する商品データを検索
-const item = (affiliatesData as AffiliateItem[]).find((a) => a.id === id);
+// affiliates.json から id または aliases に一致する商品データを検索
+const item = (affiliatesData as AffiliateItem[]).find(
+  (a) => a.id === targetId || (a.aliases && a.aliases.includes(targetId))
+);
 
 // IDが存在しない場合はコンソール警告を出力
 if (!item) {
@@ -37,31 +41,33 @@ const primaryUrl = item?.amazonUrl || item?.rakutenUrl || item?.otherUrl || '#';
     </div>
 
     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-      <div class="w-full sm:w-44 h-44 sm:h-44 shrink-0 flex items-center justify-center bg-slate-50 rounded-lg p-2 border border-slate-100 overflow-hidden">
-        <a
-          href={primaryUrl}
-          target="_blank"
-          rel="nofollow sponsored noopener"
-          class="w-full h-full flex items-center justify-center group"
-          title={item.title}
-        >
-          <img
-            src={item.imageUrl}
-            alt={item.title}
-            class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-200"
-            loading="lazy"
-          />
-        </a>
-      </div>
+      {item.imageUrl && (
+        <div class="w-full sm:w-44 h-44 sm:h-44 shrink-0 flex items-center justify-center bg-slate-50 rounded-lg p-2 border border-slate-100 overflow-hidden">
+          <a
+            href={primaryUrl}
+            target="_blank"
+            rel="nofollow sponsored noopener"
+            class="w-full h-full flex items-center justify-center group"
+            title={item.title}
+          >
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-200"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      )}
 
       <div class="flex-grow flex flex-col justify-between w-full">
         <div>
-          <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+          <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug pr-8">
             <a
               href={primaryUrl}
               target="_blank"
               rel="nofollow sponsored noopener"
-              class="hover:text-blue-600 transition-colors"
+              class="hover:text-emerald-600 transition-colors"
             >
               {item.title}
             </a>

@@ -1,4 +1,4 @@
----
+﻿---
 import '../styles/global.css';
 import Search from '../components/Search.astro';
 
@@ -10,13 +10,15 @@ interface Props {
 
 const { 
   title, 
-  description = "シンプルで読みやすい個人ブログ。日々の学びや役立つ情報を発信しています。", 
-  image = "/favicon.svg" 
+  description = "スマートな工夫で、毎日の暮らしを心地よく。子育て家庭向けのAlexa・スマートホーム活用ブログ。", 
+  image = "/images/common/header.webp" 
 } = Astro.props;
 
-const siteName = "Tech & Life Blog";
+const siteName = "TechHug";
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
+const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 <!doctype html>
@@ -24,7 +26,7 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{fullTitle}</title>
@@ -43,6 +45,25 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
       ></script>
     )}
 
+    <!-- Google Analytics 4 (GA4) 計測タグ（環境変数設定時のみ出力） -->
+    {gaMeasurementId && (
+      <>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+        ></script>
+        <script is:inline define:vars={{ gaMeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', gaMeasurementId);
+        </script>
+      </>
+    )}
+
     <!-- Pagefind UI assets -->
     <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
@@ -54,25 +75,21 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
     <!-- ヘッダー（検索対象から除外） -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs" data-pagefind-ignore>
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-        <a href="/" class="group flex items-center gap-2 shrink-0">
-          <span class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-xs group-hover:bg-blue-700 transition">
-            B
-          </span>
-          <div>
-            <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition">
-              {siteName}
-            </h1>
-            <p class="text-[11px] text-slate-500 hidden sm:block">日々の学び・ガジェット・ライフハックを発信する個人ブログ</p>
-          </div>
+        <a href="/" class="group flex items-center shrink-0">
+          <img
+            src="/images/common/header.webp"
+            alt="TechHug - スマートな工夫で、毎日の暮らしを心地よく"
+            class="h-14 sm:h-20 w-auto object-contain transition group-hover:opacity-90"
+          />
+          <span class="sr-only">{siteName}</span>
         </a>
-
         <!-- ヘッダー右側: 検索ボタン & ナビゲーション -->
         <div class="flex items-center gap-3 sm:gap-5">
           <!-- 検索モーダルを開くボタン -->
           <button
             type="button"
             id="open-search-modal"
-            class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 px-3 py-1.5 rounded-full border border-slate-200 transition"
+            class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 px-3 py-1.5 rounded-full border border-slate-200 transition"
             aria-label="サイト内検索を開く"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -84,9 +101,9 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
 
           <!-- ナビゲーション -->
           <nav class="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium text-slate-600">
-            <a href="/" class="hover:text-blue-600 py-1 transition">ホーム</a>
-            <a href="/privacy" class="hover:text-blue-600 py-1 transition">プライバシー</a>
-            <a href="/contact" class="hover:text-blue-600 py-1 transition">お問い合わせ</a>
+            <a href="/" class="hover:text-emerald-600 py-1 transition">ホーム</a>
+            <a href="/privacy" class="hover:text-emerald-600 py-1 transition">プライバシー</a>
+            <a href="/contact" class="hover:text-emerald-600 py-1 transition">お問い合わせ</a>
           </nav>
         </div>
       </div>
@@ -97,7 +114,7 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
       <div class="bg-white w-full max-w-2xl rounded-xl shadow-2xl border border-slate-200 mt-12 sm:mt-16 overflow-hidden">
         <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div class="flex items-center gap-2 text-sm font-bold text-slate-800">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
@@ -131,7 +148,7 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
           <!-- サイドバー検索ウィジェット -->
           <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-2xs">
             <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100 flex items-center gap-2 mb-4">
-              <span class="w-1.5 h-4 bg-blue-600 rounded-xs"></span>
+              <span class="w-1.5 h-4 bg-emerald-600 rounded-xs"></span>
               サイト内検索
             </h2>
             <Search id="sidebar-search" />
@@ -142,37 +159,37 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
           <!-- デフォルトのプロフィールウィジェット -->
           <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-2xs">
             <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100 flex items-center gap-2">
-              <span class="w-1.5 h-4 bg-blue-600 rounded-xs"></span>
+              <span class="w-1.5 h-4 bg-emerald-600 rounded-xs"></span>
               運営者プロフィール
             </h2>
             <div class="mt-4 flex items-center gap-3">
-              <div class="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center text-2xl">
-                👨‍💻
+              <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-2xl shrink-0">
+                🏠
               </div>
               <div>
-                <p class="font-bold text-slate-900 text-sm">ブロガー</p>
-                <p class="text-xs text-slate-500 mt-0.5">エンジニア兼ライター</p>
+                <p class="font-bold text-slate-900 text-sm">TechHug 運営者</p>
+                <p class="text-xs text-slate-500 mt-0.5">2児のパパ × 現役エンジニア<br>スマートホーム実践中</p>
               </div>
             </div>
             <p class="mt-3 text-xs text-slate-600 leading-relaxed">
-              最新のテクノロジーや便利なガジェット、日々の生活を豊かにする情報を発信しています。
+              Alexaやスマート家電を活用して、子育てと家事の「ちょっとした大変」をラクにする工夫を発信しています。
             </p>
           </div>
 
           <!-- 固定ページ案内 -->
           <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-2xs">
             <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100 flex items-center gap-2">
-              <span class="w-1.5 h-4 bg-blue-600 rounded-xs"></span>
+              <span class="w-1.5 h-4 bg-emerald-600 rounded-xs"></span>
               サイト情報
             </h2>
             <ul class="mt-3 text-xs text-slate-600 space-y-2">
               <li>
-                <a href="/privacy" class="hover:text-blue-600 flex items-center gap-1 transition">
+                <a href="/privacy" class="hover:text-emerald-600 flex items-center gap-1 transition">
                   <span>›</span> プライバシーポリシー
                 </a>
               </li>
               <li>
-                <a href="/contact" class="hover:text-blue-600 flex items-center gap-1 transition">
+                <a href="/contact" class="hover:text-emerald-600 flex items-center gap-1 transition">
                   <span>›</span> お問い合わせ
                 </a>
               </li>
