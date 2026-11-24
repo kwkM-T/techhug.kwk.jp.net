@@ -1,6 +1,7 @@
 ﻿---
 import '../styles/global.css';
 import Search from '../components/Search.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
@@ -18,6 +19,16 @@ const siteName = "TechHug";
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+// モバイルメニュー（ドロワー）用のタグ集計
+const allPosts = await getCollection('blog');
+const tagCounts = allPosts
+  .flatMap((post) => post.data.tags || [])
+  .reduce((acc, tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
 ---
 
 <!doctype html>
@@ -73,22 +84,22 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800">
     <!-- ヘッダー（検索対象から除外） -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs" data-pagefind-ignore>
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-        <a href="/" class="group flex items-center shrink-0">
+      <div class="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
+        <a href="/" class="group flex items-center min-w-0">
           <img
             src="/images/common/header.webp"
             alt="TechHug - スマートな工夫で、毎日の暮らしを心地よく"
-            class="h-14 sm:h-20 w-auto object-contain transition group-hover:opacity-90"
+            class="h-10 sm:h-16 md:h-20 w-auto max-w-[180px] sm:max-w-none object-contain transition group-hover:opacity-90"
           />
           <span class="sr-only">{siteName}</span>
         </a>
-        <!-- ヘッダー右側: 検索ボタン & ナビゲーション -->
-        <div class="flex items-center gap-3 sm:gap-5">
+        <!-- ヘッダー右側: 検索ボタン & ナビゲーション & ハンバーガーメニュー -->
+        <div class="flex items-center gap-2 sm:gap-4 shrink-0">
           <!-- 検索モーダルを開くボタン -->
           <button
             type="button"
             id="open-search-modal"
-            class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 px-3 py-1.5 rounded-full border border-slate-200 transition"
+            class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 p-2 sm:px-3 sm:py-1.5 rounded-full border border-slate-200 transition"
             aria-label="サイト内検索を開く"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -98,15 +109,138 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             <span class="hidden sm:inline">サイト内検索</span>
           </button>
 
-          <!-- ナビゲーション -->
-          <nav class="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium text-slate-600">
+          <!-- デスクトップ用ナビゲーション -->
+          <nav class="hidden lg:flex items-center gap-4 text-sm font-medium text-slate-600">
             <a href="/" class="hover:text-emerald-600 py-1 transition">ホーム</a>
             <a href="/privacy" class="hover:text-emerald-600 py-1 transition">プライバシー</a>
             <a href="/contact" class="hover:text-emerald-600 py-1 transition">お問い合わせ</a>
           </nav>
+
+          <!-- モバイル・タブレット用ハンバーガーメニューボタン -->
+          <button
+            type="button"
+            id="open-mobile-menu"
+            class="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-emerald-600 hover:bg-slate-100 border border-slate-200 transition"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- モバイル用スライドオーバードロワー（ハンバーガーメニュー） -->
+    <div
+      id="mobile-drawer"
+      class="fixed inset-0 z-40 hidden lg:hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="サイトメニュー"
+      data-pagefind-ignore
+    >
+      <!-- 背景オーバーレイ -->
+      <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"></div>
+
+      <!-- ドロワー本体 -->
+      <div class="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-white shadow-2xl border-l border-slate-200 flex flex-col overflow-y-auto">
+        <!-- ドロワーヘッダー -->
+        <div class="px-5 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 sticky top-0 z-10">
+          <span class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-4 bg-emerald-600 rounded-xs"></span>
+            メニュー
+          </span>
+          <button
+            type="button"
+            id="close-mobile-menu"
+            class="p-1.5 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-200 transition"
+            aria-label="メニューを閉じる"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="p-5 space-y-6">
+          <!-- 検索ボタン -->
+          <button
+            type="button"
+            id="drawer-open-search"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg border border-slate-200 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>サイト内を検索する</span>
+          </button>
+
+          <!-- ナビゲーション -->
+          <nav aria-label="モバイルナビゲーション">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">ページ一覧</h2>
+            <ul class="space-y-1 text-sm font-medium text-slate-700">
+              <li>
+                <a href="/" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition">
+                  <span class="text-emerald-600">›</span> ホーム
+                </a>
+              </li>
+              <li>
+                <a href="/privacy" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition">
+                  <span class="text-emerald-600">›</span> プライバシーポリシー
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 transition">
+                  <span class="text-emerald-600">›</span> お問い合わせ
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- タグ一覧 -->
+          {sortedTags.length > 0 && (
+            <div>
+              <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 px-2">タグ一覧</h2>
+              <div class="flex flex-wrap gap-2 px-1">
+                {sortedTags.map((tag) => (
+                  <a
+                    href={`/tags/${tag}`}
+                    class="inline-flex items-center text-xs bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 px-2.5 py-1.5 rounded-full border border-slate-200 transition"
+                  >
+                    <span>#{tag}</span>
+                    <span class="ml-1 text-slate-400 text-[10px]">({tagCounts[tag]})</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- 運営者プロフィール -->
+          <div class="pt-4 border-t border-slate-200">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 px-2">運営者プロフィール</h2>
+            <div class="flex items-center gap-3 px-1">
+              <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-xl shrink-0">
+                🏠
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 text-sm">TechHug 運営者</p>
+                <p class="text-xs text-slate-500 mt-0.5">2児のパパ × 現役エンジニア</p>
+              </div>
+            </div>
+            <p class="mt-3 px-1 text-xs text-slate-600 leading-relaxed">
+              Alexaやスマート家電を活用して、子育てと家事の「ちょっとした大変」をラクにする工夫を発信しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 検索モーダルダイアログ（全ページ共通） -->
     <div id="search-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-start justify-center p-4 sm:p-6 overflow-y-auto" data-pagefind-ignore>
@@ -135,17 +269,17 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
     </div>
 
     <!-- メインコンテンツ領域 -->
-    <main class="flex-grow max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="flex-grow max-w-6xl mx-auto w-full px-3 sm:px-6 py-5 sm:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
         <!-- 本文エリア -->
-        <div class="lg:col-span-8">
+        <div class="lg:col-span-8 min-w-0">
           <slot />
         </div>
 
         <!-- サイドバー（検索対象から除外） -->
-        <aside class="lg:col-span-4 space-y-6" data-pagefind-ignore>
-          <!-- サイドバー検索ウィジェット -->
-          <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-2xs">
+        <aside class="lg:col-span-4 space-y-6 min-w-0" data-pagefind-ignore>
+          <!-- サイドバー検索ウィジェット（デスクトップ表示） -->
+          <div class="hidden lg:block bg-white p-5 rounded-lg border border-slate-200 shadow-2xs">
             <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-2 border-b border-slate-100 flex items-center gap-2 mb-4">
               <span class="w-1.5 h-4 bg-emerald-600 rounded-xs"></span>
               サイト内検索
@@ -210,11 +344,17 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
       </div>
     </footer>
 
-    <!-- モーダル開閉スクリプト -->
+    <!-- モーダル・モバイルメニュー開閉スクリプト -->
     <script is:inline>
       const modal = document.getElementById('search-modal');
       const openBtn = document.getElementById('open-search-modal');
       const closeBtn = document.getElementById('close-search-modal');
+
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const openMenuBtn = document.getElementById('open-mobile-menu');
+      const closeMenuBtn = document.getElementById('close-mobile-menu');
+      const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+      const drawerSearchBtn = document.getElementById('drawer-open-search');
 
       function openModal() {
         modal?.classList.remove('hidden');
@@ -227,25 +367,60 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
       function closeModal() {
         modal?.classList.add('hidden');
-        document.body.style.overflow = '';
+        if (mobileDrawer?.classList.contains('hidden')) {
+          document.body.style.overflow = '';
+        }
+      }
+
+      function openDrawer() {
+        mobileDrawer?.classList.remove('hidden');
+        openMenuBtn?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        mobileDrawer?.classList.add('hidden');
+        openMenuBtn?.setAttribute('aria-expanded', 'false');
+        if (modal?.classList.contains('hidden')) {
+          document.body.style.overflow = '';
+        }
       }
 
       openBtn?.addEventListener('click', openModal);
       closeBtn?.addEventListener('click', closeModal);
 
-      // 背景クリックで閉じる
+      openMenuBtn?.addEventListener('click', openDrawer);
+      closeMenuBtn?.addEventListener('click', closeDrawer);
+      drawerBackdrop?.addEventListener('click', closeDrawer);
+
+      drawerSearchBtn?.addEventListener('click', () => {
+        closeDrawer();
+        openModal();
+      });
+
+      // ドロワー内のリンククリック時に閉じる
+      mobileDrawer?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeDrawer);
+      });
+
+      // 背景クリックで検索モーダルを閉じる
       modal?.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
       });
 
-      // Escキーで閉じる & Cmd+K / Ctrl+K で開くショートカット
+      // Escキーで閉じる & Cmd+K / Ctrl+K で検索を開くショートカット
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
-          closeModal();
+        if (e.key === 'Escape') {
+          if (!modal?.classList.contains('hidden')) {
+            closeModal();
+          } else if (!mobileDrawer?.classList.contains('hidden')) {
+            closeDrawer();
+          }
         }
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
           e.preventDefault();
           if (modal?.classList.contains('hidden')) {
+            closeDrawer();
             openModal();
           } else {
             closeModal();

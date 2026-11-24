@@ -9,21 +9,45 @@
     background-color: #f7f9fa;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
 
   body {
     line-height: 1.85;
     letter-spacing: 0.03em;
+    overflow-x: clip;
   }
 }
 
 /* ブログ記事（Cocoon風の見出し・装飾） */
+.prose {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .prose h2 {
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #1a202c;
   border-left: 5px solid #2563eb;
-  padding: 0.5rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   background-color: #f8fafc;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -31,13 +55,24 @@
 }
 
 .prose h3 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: #2d3748;
   border-bottom: 2px solid #e2e8f0;
   padding-bottom: 0.35rem;
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .prose h2 {
+    font-size: 1.45rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+  }
 }
 
 .prose p {

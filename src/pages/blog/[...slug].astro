@@ -43,9 +43,9 @@ function formatDate(date: Date) {
   description={post.data.description} 
   image={post.data.heroImage}
 >
-  <article class="bg-white rounded-lg border border-slate-200 p-6 sm:p-10 shadow-2xs" data-pagefind-body>
+  <article class="bg-white rounded-lg border border-slate-200 p-4 sm:p-8 lg:p-10 shadow-2xs" data-pagefind-body>
     <!-- 記事ヘッダー -->
-    <header class="mb-8 pb-6 border-b border-slate-200">
+    <header class="mb-6 sm:mb-8 pb-5 sm:pb-6 border-b border-slate-200">
       <!-- カテゴリ・タグ -->
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-3">
@@ -62,7 +62,7 @@ function formatDate(date: Date) {
       )}
 
       <!-- 記事タイトル -->
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug" data-pagefind-meta="title">
+      <h1 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug" data-pagefind-meta="title">
         {post.data.title}
       </h1>
 
@@ -105,7 +105,7 @@ function formatDate(date: Date) {
 
     <!-- 自動生成の目次 (Cocoon風) -->
     {toc.length > 0 && (
-      <nav class="mb-10 bg-slate-50 border border-slate-200 rounded-lg p-5" data-pagefind-ignore>
+      <nav class="mb-8 sm:mb-10 bg-slate-50 border border-slate-200 rounded-lg p-4 sm:p-5" data-pagefind-ignore>
         <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
           <span class="text-sm font-bold text-slate-800 flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
